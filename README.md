@@ -23,7 +23,24 @@ Next, investigate each of the following concerns.
       - data access: Whether the user can issue this command for this paritcular business entity
 - Reporting: how to project the data for consumption by a traditional report engine
 - Data migration: how to migrate data from an existing CRUD application
+- Scale: explore tools for larger systems
+    1. Many event types, many commands, many relationships between events
+    2. Hundreds, thousands, millions, billions of events
+
+# Technology Stack
+
+This sample app will be written in Java since that's the language I know best.
 
 # Some tools that may be useful
 
 - [Java Faker](https://github.com/DiUS/java-faker) Generate a stream of test events
+- Report engines:
+    1. [Apache Superset](https://superset.apache.org/)
+    2. [Eclipse BIRT](https://projects.eclipse.org/projects/technology.birt)
+- Event stores:
+    1. [Apache Druid](https://druid.apache.org/)
+    2. [Apache Cassandra](https://cassandra.apache.org/_/index.html)
+    
+Note, I am allergic to the Confluent stack.
+
+    
