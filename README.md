@@ -2,4 +2,28 @@
 
 This application is a showcase for Ralf Westphal's ideas regarding event-based applications.
 
+These ideas are in Ralf's Substack articles found below.  They are worth a read:
+
 - [Killing the Entity: Event Sourcing done the Epistemic Way](https://ralfwestphal.substack.com/p/killing-the-entity)
+- [AQ over CRUD](https://ralfwestphal.substack.com/p/aq-over-crud)
+- [True Agility Requires Event Sourcing](https://ralfwestphal.substack.com/p/true-agility-requires-event-sourcing)
+
+# The General Approach
+
+First, a simple in-memory event store capable of the basic use cases outlined in the above links.  This provides a simple foundation.
+
+Next, investigate each of the following concerns.
+
+- Audit: how to list the events related to a person, within a datetime range, from a specific IP address, or regarding a specific business entity.
+- Access control: 
+    1. how to define access control lists on events
+    2. how to restrict a list to only events the current user can see
+    3. how to verify the current user is allowed to issue a particular command 
+      - functional access: Whether the user is allowed to issue this command in the first place
+      - data access: Whether the user can issue this command for this paritcular business entity
+- Reporting: how to project the data for consumption by a traditional report engine
+- Data migration: how to migrate data from an existing CRUD application
+
+# Some tools that may be useful
+
+- [Java Faker](https://github.com/DiUS/java-faker) Generate a stream of test events
