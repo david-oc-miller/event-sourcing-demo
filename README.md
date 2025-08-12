@@ -8,6 +8,11 @@ These ideas are in Ralf's Substack articles found below.  They are worth a read:
 - [AQ over CRUD](https://ralfwestphal.substack.com/p/aq-over-crud)
 - [True Agility Requires Event Sourcing](https://ralfwestphal.substack.com/p/true-agility-requires-event-sourcing)
 
+# Event Sourcing Defined
+
+1. Events are the source of truth. Other repositories may be hydrated from the event stream, for search or reporting or other special requirements, but these other repositories can always be wiped and re-hydrated from the event stream, with no loss of data.
+2. Events are immutable
+
 # The General Approach
 
 First, a simple in-memory event store capable of the basic use cases outlined in the above links.  This provides a simple foundation.
@@ -26,10 +31,18 @@ Next, investigate each of the following concerns.
 - Scale: explore tools for larger systems
     1. Many event types, many commands, many relationships between events
     2. Hundreds, thousands, millions, billions of events
+- Queries: 
+    1. How to populate lists
+    2. How to show reports
+- Event handling: 
+    1. configurable set of commands to raise in response to events
+    2. allow for predicates, so a command can be raised for events on a certain object, but not for events on other objects of the same type
 
 # Technology Stack
 
-This sample app will be written in Java since that's the language I know best.
+- Programming language: Java since that's the language I know best.
+- Events from server to browser: SSE
+- Events from browser to server: REST
 
 # Some tools that may be useful
 
