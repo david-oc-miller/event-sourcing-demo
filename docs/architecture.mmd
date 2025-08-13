@@ -1,0 +1,20 @@
+   C4Context
+   title System Context diagram for Event Sourcing Demo
+   Enterprise_Boundary(b0, "EventBoundary0") {
+   Person(userA, "System User", "User with ability to modify and query objects in the system")
+   Person(userB, "Designer", "Designer with ability to create event types and handlers")
+   System(systemA, "Event Sourcing Demo", "Allows users to create and list events and event handlers")
+
+   Enterprise_Boundary(b1, "Event Boundary") {
+   SystemDb_Ext(EventStore, "Event Store")
+   System(EventAPI, "Event API")
+   System(EventUI, "Event UI")
+   }
+   }
+  
+
+   Rel(userA, systemA, "Uses")
+   Rel(userB, systemA, "Designs")
+
+   
+   

@@ -1,0 +1,16 @@
+* System Requirements
+
+SYS-1: The system shall allow the authorized user to create events.
+SYS-2: The system shall allow the authorized user to list events.
+SYS-3: The system shall allow the authorized user to create event types.
+SYS-4: The system shall allow the authorized user to list event types.
+
+* Definitions
+
+1. Event Type: defines a set of valid events.  The event type must have a name and a valid JSON schema.
+
+* Technical Constraints
+
+TC-1: Event types must declare a JSON schema.  The schema must include an event ID.
+TC-2: Once created, an event must be able to appear in query results; events cannot be removed.
+TC-3: Once created, an event must be the same in every query result; events cannot be changed.

@@ -1,0 +1,4 @@
+// mermaid output files
+docs/*.svg
+docs/*.pdf
+docs/chrome-headless-shell

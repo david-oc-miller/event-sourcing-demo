@@ -37,6 +37,7 @@ Next, investigate each of the following concerns.
 - Event handling: 
     1. configurable set of commands to raise in response to events
     2. allow for predicates, so a command can be raised for events on a certain object, but not for events on other objects of the same type
+- Event routing
 - Extensibility
     1. Feature flags: enable or disable particular event handlers
     2. Customer-specific code
@@ -44,6 +45,8 @@ Next, investigate each of the following concerns.
        - custom UI
 
 # Documentation
+
+All documents as text files within this repository.
 
 Maintain a requirements document and architecture diagrams.
 
@@ -56,6 +59,10 @@ Architecture diagram in Mermaid C4.
 - Programming language: Java since that's the language I know best.
 - Events from server to browser: SSE
 - Events from browser to server: REST
+
+# Constraints
+
+- Support different event stores; no tight coupling to a particular implementation
 
 # Some tools that may be useful
 
