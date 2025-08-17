@@ -2,3 +2,12 @@
 docs/*.svg
 docs/*.pdf
 docs/chrome-headless-shell
+
+// Eclipse files
+.classpath
+.project
+.settings
+
+// maven
+target
+dependency-reduced-pom.xml

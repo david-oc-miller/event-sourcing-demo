@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Case Schema",
+  "description": "Schema for a case with title and event date",
+  "properties": {
+    "caseTitle": {
+      "type": "string",
+      "description": "The title or name of the case",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "eventDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date when the case event occurred (YYYY-MM-DD format)",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    }
+  },
+  "required": ["caseTitle", "eventDate"],
+  "additionalProperties": false
+}
