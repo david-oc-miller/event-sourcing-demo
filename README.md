@@ -76,4 +76,45 @@ Architecture diagram in Mermaid C4.
     
 Note, I am allergic to the Confluent stack.
 
-    
+# General Approach to Event Sourcing Applications
+
+1. What are the events? the commands? the queries?
+   - Every command is mapped to one or more events.
+   - Every query will retrieve events
+   - The UI, or more generally portals, issue commands
+   - The back end records events
+   
+2. Each command might be a class, and events are classes
+   - Vertical Slice Architecture
+   - UI (or any portal) sends a command, and the command records events 
+   - Commands may return an entity id, or nothing
+   - A portal might issue multiple commands back to back, establishing a data flow; earlier commands may raise events, later commands may query events and raise new events.  Each command interacts only with the event store.  Commands don't know about each other.
+   
+3. Command processing
+   - check constraints (that is: by querying event stream).  
+   - Events from the query results can be reduced to a data structure. 
+   - This data structure is per-command, something like a DTO; avoid a single application-wide domain model (in other words: avoid the "Single Model Fallacy").
+   - functions to evaluate rules or make decisions are pure functions, issuing a query and iterating over events.  No connection to commands or to other objects.  These functions do not appear in the public documentation.
+   - if you need events from different filters, query the event stream with each filter and join the results into a single context... being careful about the performance impacts.
+   - if constraints are OK, execute the command (transform / side effects ...) and generate events to record the changes made
+   - if not, raise an error
+   - command execution pipeline: query --> replay --> build model --> check model --> generate events --> record events
+   
+4. What to do if new, relevant events were raised between "replay" and "generate events"?
+    - How to tell: execute the query again ... but this introduces yet another race condition: the time between this new query and when we record the new events
+    - or, just see if more relevant events were added at all.  If more events were added, relevant to our use case, then we stop processing.  But again this introduces another race.
+   
+4. Commands do not return a payload, but they can return an envelope with status information (success/failure, reason for failure)
+   
+5. Queries return a data structure
+   - sourced, one way or another, from the event stream 
+
+6. Design documentation
+   - List of commands; for each, the events recorded
+
+7. Implement a vertical slice
+   - Which events make up the context?  
+   - What is the context model - what do I need to know about the state of the system right now?
+   - What constraints do I need to check?
+   - What decisions do I need to make?
+   - Which events do I need to generate?
