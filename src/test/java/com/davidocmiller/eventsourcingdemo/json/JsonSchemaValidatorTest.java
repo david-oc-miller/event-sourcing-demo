@@ -2,8 +2,6 @@ package com.davidocmiller.eventsourcingdemo.json;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -415,16 +413,20 @@ class JsonSchemaValidatorTest
 
         @Test
         @DisplayName("Should handle file read errors gracefully")
-        void shouldHandleFileReadErrorsGracefully() throws IOException
+        void shouldHandleFileReadErrorsGracefully()
         {
-            Path nonExistentSchemaFile = tempDir.resolve("nonExistentSchema.json");
-
             Path nonExistentFile = tempDir.resolve("nonexistent.json");
 
-            JsonSchemaValidator.ValidationResult result = validator.validateFiles(nonExistentSchemaFile, nonExistentFile);
+            String document = """
+                    {
+                      "value": "test"
+                    }
+                    """;
+
+            JsonSchemaValidator.ValidationResult result = validator.validateWithSchemaFile(nonExistentFile, document);
 
             assertThat(result.isValid()).isFalse();
-            assertThat(result.errorMessage()).contains("Failed to read files");
+            assertThat(result.errorMessage()).contains("Failed to read schema file");
         }
     }
 
@@ -468,12 +470,13 @@ class JsonSchemaValidatorTest
         void shouldHandleNullInputsGracefully()
         {
             JsonSchemaValidator.ValidationResult result = validator.validate(null, "{}");
-            assertThat(result.isValid()).isFalse();
             assertThat(result.errorMessage()).contains("Cannot invoke \"String.length()\" because \"s\" is null");
-
+            assertThat(result.isValid()).isFalse();
+            
             result = validator.validate("{}", null);
-            assertThat(result.isValid()).isFalse();
             assertThat(result.errorMessage()).contains("Cannot invoke \"String.length()\" because \"s\" is null");
+            assertThat(result.isValid()).isFalse();
+            
         }
     }
 
@@ -565,7 +568,7 @@ class JsonSchemaValidatorTest
                     }
                     """;
 
-            String invalidDocument = """
+            String booleanDocument = """
                     {
                       "value": true
                     }
@@ -573,11 +576,13 @@ class JsonSchemaValidatorTest
 
             JsonSchemaValidator.ValidationResult stringResult = validator.validate(multipleTypeSchema, stringDocument);
             JsonSchemaValidator.ValidationResult numberResult = validator.validate(multipleTypeSchema, numberDocument);
-            JsonSchemaValidator.ValidationResult invalidResult = validator.validate(multipleTypeSchema, invalidDocument);
+            JsonSchemaValidator.ValidationResult booleanResult = validator.validate(multipleTypeSchema, booleanDocument);
 
             assertThat(stringResult.isValid()).isTrue();
             assertThat(numberResult.isValid()).isTrue();
-            assertThat(invalidResult.isValid()).isFalse();
+            assertThat(booleanResult.isValid()).isFalse();
+            assertThat(booleanResult.errors()).anyMatch(error -> error.contains("expected type one of ['string', 'number']") &&
+                    error.contains("got 'boolean'"));
         }
     }
 
@@ -915,15 +920,17 @@ class JsonSchemaDefinitionValidatorTest
     @DisplayName("Boolean Schema Tests")
     class BooleanSchemaTests
     {
+
         @Test
         @DisplayName("Should accept boolean true schema")
-        void shouldAcceptBooleanTrueSchema() throws IOException
+        void shouldAcceptBooleanTrueSchema()
         {
             String booleanSchema = "true";
 
             JsonSchemaDefinitionValidator.ValidationResult result = validator.validateSchema(booleanSchema);
 
             assertThat(result.isValid()).isTrue();
+            assertThat(result.errors()).isEmpty();
         }
 
         @Test
@@ -935,6 +942,29 @@ class JsonSchemaDefinitionValidatorTest
             JsonSchemaDefinitionValidator.ValidationResult result = validator.validateSchema(booleanSchema);
 
             assertThat(result.isValid()).isTrue();
+            assertThat(result.errors()).isEmpty();
+        }
+
+        @Test
+        @DisplayName("Should reject non-boolean, non-object schemas")
+        void shouldRejectInvalidSchemaTypes()
+        {
+            String stringSchema = "\"not a schema\"";
+            String numberSchema = "42";
+            String arraySchema = "[1, 2, 3]";
+
+            JsonSchemaDefinitionValidator.ValidationResult stringResult = validator.validateSchema(stringSchema);
+            JsonSchemaDefinitionValidator.ValidationResult numberResult = validator.validateSchema(numberSchema);
+            JsonSchemaDefinitionValidator.ValidationResult arrayResult = validator.validateSchema(arraySchema);
+
+            assertThat(stringResult.isValid()).isFalse();
+            assertThat(stringResult.errors()).anyMatch(error -> error.contains("schema must be an object or boolean"));
+
+            assertThat(numberResult.isValid()).isFalse();
+            assertThat(numberResult.errors()).anyMatch(error -> error.contains("schema must be an object or boolean"));
+
+            assertThat(arrayResult.isValid()).isFalse();
+            assertThat(arrayResult.errors()).anyMatch(error -> error.contains("schema must be an object or boolean"));
         }
     }
 

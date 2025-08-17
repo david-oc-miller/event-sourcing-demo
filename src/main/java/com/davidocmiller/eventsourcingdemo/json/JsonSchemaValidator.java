@@ -42,14 +42,18 @@ public class JsonSchemaValidator
     {
         try
         {
-            // Parse the schema and document using built-in JSON-P
-            JsonReader schemaReader = Json.createReader(new StringReader(schemaJson));
-            JsonObject schema = schemaReader.readObject();
-            schemaReader.close();
+            // Parse the schema and document using built-in JSON-P with try-with-resources
+            JsonObject schema;
+            try (JsonReader schemaReader = Json.createReader(new StringReader(schemaJson)))
+            {
+                schema = schemaReader.readObject();
+            }
 
-            JsonReader documentReader = Json.createReader(new StringReader(documentJson));
-            JsonValue document = documentReader.read();
-            documentReader.close();
+            JsonValue document;
+            try (JsonReader documentReader = Json.createReader(new StringReader(documentJson)))
+            {
+                document = documentReader.read();
+            }
 
             // Perform validation
             List<String> errors = new ArrayList<>();
@@ -449,3 +453,9 @@ public class JsonSchemaValidator
     }
 
 }
+
+// No external dependencies required! Uses only built-in Java libraries:
+// - jakarta.json.* (JSON-P, part of Java EE/Jakarta EE, included in Java 11+)
+// - java.nio.file.* for file operations
+// - java.util.regex.* for pattern matching
+// - java.time.* for date validation

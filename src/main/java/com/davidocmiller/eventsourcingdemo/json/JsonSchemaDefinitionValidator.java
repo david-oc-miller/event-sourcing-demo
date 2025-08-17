@@ -50,11 +50,27 @@ public class JsonSchemaDefinitionValidator
      */
     public ValidationResult validateSchema(String schemaJson)
     {
-        try (JsonReader reader = Json.createReader(new StringReader(schemaJson)))
+        try
         {
+            // Handle boolean schemas (true/false) which are valid but not parsed as JSON objects
+            String trimmedSchema = schemaJson.trim();
+            if ("true".equals(trimmedSchema) || "false".equals(trimmedSchema))
+            {
+                // Boolean schemas are always valid according to JSON Schema spec
+                return new ValidationResult(true, List.of());
+            }
+
+            // Handle null schema
+            if ("null".equals(trimmedSchema))
+            {
+                List<String> errors = List.of(": null is not a valid JSON schema (must be object or boolean)");
+                return new ValidationResult(false, errors);
+            }
+
+            // Try to parse as JSON object/array/value
             JsonValue schema;
 
-            try
+            try (JsonReader reader = Json.createReader(new StringReader(schemaJson)))
             {
                 schema = reader.read();
             }
@@ -118,7 +134,7 @@ public class JsonSchemaDefinitionValidator
         if (schema.getValueType() == JsonValue.ValueType.TRUE ||
                 schema.getValueType() == JsonValue.ValueType.FALSE)
         {
-            // Boolean schemas are always valid
+            // Boolean schemas are always valid (true = accept all, false = reject all)
             return;
         }
 
