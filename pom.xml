@@ -18,9 +18,9 @@
     <!-- Properties -->
     <properties>
         <!-- Java Version -->
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
         
         <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,18 +99,17 @@
                 <configuration>
                     <release>${maven.compiler.release}</release>
                     <compilerArgs>
-                      <arg>--enable-preview</arg>
                       <arg>-Xlint:-processing</arg>
                       <arg>-Xlint:all</arg>
                       <arg>-Werror</arg>
                     </compilerArgs>
-                    <annotationProcessorPaths>
-		      <path>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-		      </path>
-		    </annotationProcessorPaths>
+                    <!-- <annotationProcessorPaths> -->
+		    <!--   <path> -->
+		    <!--     <groupId>org.projectlombok</groupId> -->
+		    <!--     <artifactId>lombok</artifactId> -->
+		    <!--     <version>${lombok.version}</version> -->
+		    <!--   </path> -->
+		    <!-- </annotationProcessorPaths> -->
                 </configuration>
             </plugin>
 
@@ -120,7 +119,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
                     <includes>
                         <include>**/*Test.java</include>
                         <include>**/*Tests.java</include>
@@ -134,7 +132,6 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven.failsafe.plugin.version}</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
                     <includes>
                         <include>**/*IT.java</include>
                         <include>**/*IntegrationTest.java</include>
@@ -268,10 +265,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven.javadoc.plugin.version}</version>
                 <configuration>
-                    <source>21</source>
-                    <additionalJOptions>
-                        <additionalJOption>--enable-preview</additionalJOption>
-                    </additionalJOptions>
+                    <source>${maven.compiler.source}</source>
                     <doclint>none</doclint>
                 </configuration>
                 <executions>
