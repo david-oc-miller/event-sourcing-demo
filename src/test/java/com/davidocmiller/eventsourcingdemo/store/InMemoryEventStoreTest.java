@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -64,5 +65,20 @@ public class InMemoryEventStoreTest
         store.store(event);
 
         assertThrows(IllegalArgumentException.class, () -> store.store(event));
+    }
+
+    @Test
+    void shouldStoreAndRetrieveRelatedEvents()
+    {
+        Event root = new Event("", JsonValue.EMPTY_JSON_OBJECT);
+        store.store(root);
+
+        Event level2 = new Event("level2", JsonValue.EMPTY_JSON_OBJECT, List.of(root));
+        store.store(level2);
+
+        List<Event> downstream = store.downstreamEvents(root);
+        assertNotNull(downstream, "Should have list of downstream events");
+        assertSame(1, downstream.size(), "Should have one downstream event");
+        assertSame(level2, downstream.get(0));
     }
 }
