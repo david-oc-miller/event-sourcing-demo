@@ -18,4 +18,6 @@ public interface EventStore
 
     List<Event> downstreamEvents(Event root);
 
+    void register(Projection projection);
+
 }
