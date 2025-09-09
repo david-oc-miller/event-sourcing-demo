@@ -32,6 +32,8 @@
         <jakarta.json.bind.version>3.0.3</jakarta.json.bind.version>
         <junit.version>5.10.0</junit.version>
         <lombok.version>1.18.38</lombok.version>
+        <pitest.version>1.8.0</pitest.version>
+        <pitest.junit5.version>0.15</pitest.junit5.version>
         
         <!-- Plugin Versions -->
         <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
@@ -82,6 +84,13 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.pitest</groupId>
+          <artifactId>pitest-junit5-plugin</artifactId>
+          <version>${pitest.junit5.version}</version>
+          <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -146,6 +155,14 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- pitest plugin for mutation testing -->
+            <plugin>
+              <groupId>org.pitest</groupId>
+              <artifactId>pitest-maven</artifactId>
+              <version>${pitest.version}</version>
+            </plugin>
+
 
             <!-- JaCoCo Code Coverage -->
             <plugin>
