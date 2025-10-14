@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor Designer as d
+actor Author as au
+actor Analyst as an
+
+package EventStore {
+
+  usecase "Create Event Type" as CET
+  usecase "Write Event" as WE
+  usecase "Search Events" as SE
+  usecase "Audit User Activity" as AUE
+  usecase "Audit Entity Activity" as AEA
+}
+
+d --> CET
+au --> WE
+au --> SE
+an --> AUE
+an --> AEA
+
+@enduml
