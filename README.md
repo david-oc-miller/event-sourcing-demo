@@ -1,6 +1,6 @@
-# Event Sourcing Demo Application
+# Event Sourcing Learning Application
 
-This application is a showcase for Ralf Westphal's ideas regarding event-based applications.
+This application is for me to learn how to write an event-based application according to Ralf Westphal's ideas.
 
 These ideas are in Ralf's Substack articles found below.  They are worth a read:
 
@@ -8,10 +8,13 @@ These ideas are in Ralf's Substack articles found below.  They are worth a read:
 - [AQ over CRUD](https://ralfwestphal.substack.com/p/aq-over-crud)
 - [True Agility Requires Event Sourcing](https://ralfwestphal.substack.com/p/true-agility-requires-event-sourcing)
 
+I am also using this repository as an ATDD Sandbox, for this class https://atdd-accelerator.optivem.com/, given by https://www.linkedin.com/in/valentinajemuovic.
+
 # Event Sourcing Defined
 
-1. Events are the source of truth. Other repositories may be hydrated from the event stream, for search or reporting or other special requirements, but these other repositories can always be wiped and re-hydrated from the event stream, with no loss of data.
-2. Events are immutable
+1. Events are the source of truth.
+2. Other repositories are generated from events and can always be recreated.  These secondary repositories serve special purposes (search, reporting, etc.).  They contain only data that is already in the event store.
+3. Events are immutable.
 
 # Demo Scope
 
