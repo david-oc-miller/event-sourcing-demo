@@ -124,6 +124,8 @@ Note, I am allergic to the Confluent stack.
   
 # Documentation
 
-https://david-oc-miller.github.io/event-sourcing-demo/
+GitHub Pages - https://david-oc-miller.github.io/event-sourcing-demo/
+Project Boards - https://github.com/david-oc-miller?tab=projects
+
   
 [![pages-build-deployment](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment)
