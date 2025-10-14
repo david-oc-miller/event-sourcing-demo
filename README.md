@@ -122,4 +122,8 @@ Note, I am allergic to the Confluent stack.
    - What decisions do I need to make?
    - Which events do I need to generate?
   
+# Documentation
+
+https://david-oc-miller.github.io/event-sourcing-demo/
+  
 [![pages-build-deployment](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment)
