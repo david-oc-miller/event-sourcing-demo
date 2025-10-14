@@ -8,7 +8,7 @@ As a proof of concept, I need only a very simple interface.  The event store wil
 
 ## Component Diagram
 
-![Components](comopnents.png)
+![Components](components.png)
 
 ## Tech Stack
 
