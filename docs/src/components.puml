@@ -1,0 +1,13 @@
+@startuml
+
+left to right direction
+
+package "Event Store" {
+  [Event Store] as ES
+  [Command Line Interface] as CLI
+}
+
+CLI --> ES
+
+@enduml
+
