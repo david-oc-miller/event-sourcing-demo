@@ -1,5 +1,12 @@
 # Event Sourcing Learning Application
 
+[![pages-build-deployment](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment)
+[![commit-stage-monolith](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/commit-stage-monolith.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/commit-stage-monolith.yml)
+[![acceptance-stage](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/acceptance-stage.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/acceptance-stage.yml)
+[![qa-stage](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-stage.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-stage.yml)
+[![qa-signoff](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-signoff.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-signoff.yml)
+[![prod-stage](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/prod-stage.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/prod-stage.yml)
+
 This application is for me to learn how to write an event-based application according to Ralf Westphal's ideas.
 
 These ideas are in Ralf's Substack articles found below.  They are worth a read:
@@ -23,10 +30,3 @@ GitHub Pages - https://david-oc-miller.github.io/event-sourcing-demo/
 Project Boards - https://github.com/users/david-oc-miller/projects/1
 
   
-[![pages-build-deployment](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/pages/pages-build-deployment)
-
-[![commit-stage-monolith](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/commit-stage-monolith.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/commit-stage-monolith.yml)
-[![acceptance-stage](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/acceptance-stage.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/acceptance-stage.yml)
-[![qa-stage](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-stage.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-stage.yml)
-[![qa-signoff](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-signoff.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/qa-signoff.yml)
-[![prod-stage](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/prod-stage.yml/badge.svg)](https://github.com/david-oc-miller/event-sourcing-demo/actions/workflows/prod-stage.yml)
