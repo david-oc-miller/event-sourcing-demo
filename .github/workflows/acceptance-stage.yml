@@ -1,15 +1,16 @@
 name: acceptance-stage
 
-# on:
-#   schedule:
-#     - cron: '*/30 * * * *'  # Run every 30 minutes
-#   workflow_dispatch:
-#     inputs:
-#       force_run:
-#         description: 'Force run (even if no new images)'
-#         required: false
-#         default: false
-#         type: boolean
+on:
+  schedule:
+    - cron: '30 10 1 * *'  # Run at 10:30 AM on 1st day of month - temporary until we have acceptance tests
+   # - cron: '*/30 * * * *'  # Run every 30 minutes      
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Force run (even if no new images)'
+        required: false
+        default: false
+        type: boolean
 
 concurrency:
   group: acceptance-stage
