@@ -4,6 +4,7 @@ left to right direction
 actor Designer as d
 actor Author as au
 actor Analyst as an
+actor "Mail Server" as m
 
 package EventStore {
 
@@ -19,5 +20,7 @@ au --> WE
 au --> SE
 an --> AUE
 an --> AEA
+
+WE --> m
 
 @enduml
