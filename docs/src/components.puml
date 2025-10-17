@@ -7,7 +7,11 @@ package "Event Store" {
   [Command Line Interface] as CLI
 }
 
+[Mail Server] as MS
+
 CLI --> ES
+
+"Event Store" --> MS
 
 @enduml
 
