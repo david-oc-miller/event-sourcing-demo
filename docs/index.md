@@ -68,7 +68,7 @@ Maintain a requirements document and architecture diagrams.
 - Event stores:
     1. [Apache Druid](https://druid.apache.org/)
     2. [Apache Cassandra](https://cassandra.apache.org/_/index.html)
-    3. [Kurrent](https://kurrent.io]
+    3. [Kurrent](https://kurrent.io)
     
 Note, I am allergic to the Confluent stack.
 
