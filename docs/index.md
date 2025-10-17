@@ -2,6 +2,14 @@
 
 My event-sourcing-demo is for me to understand the concepts of event sourcing.  I don't intent it for use in real applications.
 
+# System Behavior 
+
+Here: [system-behavior](system-behavior.md)
+
+# System Structure
+
+Here: [system-structure](system-structure.md)
+
 # Demo Scope
 
 First, a simple in-memory event store capable of the basic use cases outlined in the above links.  This provides a simple foundation.
