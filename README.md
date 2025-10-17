@@ -15,7 +15,7 @@ These ideas are in Ralf's Substack articles found below.  They are worth a read:
 - [AQ over CRUD](https://ralfwestphal.substack.com/p/aq-over-crud)
 - [True Agility Requires Event Sourcing](https://ralfwestphal.substack.com/p/true-agility-requires-event-sourcing)
 
-I am also using this repository as an ATDD Sandbox, for this class https://atdd-accelerator.optivem.com/, given by https://www.linkedin.com/in/valentinajemuovic.
+This repository is also an ATDD Sandbox, for [ATDD Accelerator Program](https://atdd-accelerator.optivem.com/) given by [Valentina Jemuović](https://www.linkedin.com/in/valentinajemuovic).
 
 # Event Sourcing Defined
 
@@ -29,4 +29,7 @@ GitHub Pages - https://david-oc-miller.github.io/event-sourcing-demo/
 
 Project Boards - https://github.com/users/david-oc-miller/projects/1
 
-  
+# Collaborators
+
+* [Ralf Westphal](https://ralfwestphal.substack.com): My inspiration.
+* [Valentina Jemuović](https://www.linkedin.com/in/valentinajemuovic/): My ATDD coach.
