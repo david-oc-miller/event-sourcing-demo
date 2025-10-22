@@ -12,3 +12,8 @@ docs/chrome-headless-shell
 // maven
 target
 dependency-reduced-pom.xml
+
+// Emacs
+#*
+*#
+

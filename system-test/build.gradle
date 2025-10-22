@@ -20,6 +20,8 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'jakarta.json:jakarta.json-api:2.1.3'
+    runtimeOnly 'org.eclipse.parsson:parsson:1.1.7'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.microsoft.playwright:playwright:1.44.0'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

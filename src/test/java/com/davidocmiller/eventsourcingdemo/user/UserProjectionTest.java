@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.davidocmiller.eventsourcingdemo.JsonFactory;
 import com.davidocmiller.eventsourcingdemo.model.Event;
 import com.davidocmiller.eventsourcingdemo.store.EventStore;
 import com.davidocmiller.eventsourcingdemo.store.InMemoryEventStore;
@@ -34,19 +35,7 @@ public class UserProjectionTest
     @Test
     void after_register_user_can_find_user() throws Exception
     {
-        String userRegisteredJson = """
-                {
-                  "event": "userRegistered",
-                  "userid": "alice",
-                  "firstName": "Alice"
-                }
-                """;
-        JsonObject user;
-        try (JsonReader userReader = Json.createReader(new StringReader(userRegisteredJson)))
-        {
-            user = userReader.readObject();
-        }
-        assertNotNull(user);
+        JsonObject user = JsonFactory.generateUser();
 
         Event userRegistered = new Event("userRegistered", user);
         store.store(userRegistered);
@@ -56,5 +45,4 @@ public class UserProjectionTest
         assertEquals("alice", found.get().getUserId());
         assertEquals("Alice", found.get().getFirstName());
     }
-
 }

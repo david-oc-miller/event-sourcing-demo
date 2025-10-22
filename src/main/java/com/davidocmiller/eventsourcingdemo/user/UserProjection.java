@@ -13,7 +13,7 @@ import jakarta.json.JsonValue.ValueType;
 
 public class UserProjection implements Projection
 {
-    private Map<String, User> usersById = new HashMap<>();
+    private final Map<String, User> usersById = new HashMap<>();
 
     @Override
     public void notify(Event event)
