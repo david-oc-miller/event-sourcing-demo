@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+hide empty description
+
+[*] --> Starting
+Starting --> Running : Config OK
+Starting --> Error : Config Invalid
+Running --> Updating : Config Updated
+Updating --> Running : Updated Config OK
+Updating --> Error : Updated Config Invalid
+Error --> Updating : Config Updated
+Running --> [*] : Shutdown
+Error --> [*] : Shutdown
+
+@enduml

@@ -1,5 +1,19 @@
 # System Behavior (Use Cases)
 
+## State Diagram
+
+![State Diagram](state-diagram.png)
+
+On startup, ensure configuration is valid.
+
+While running, process events as usual.
+
+On a configuration update request, stop processing new requests; when in-flight requests are finished,  ensure the 
+new configuration is valid.
+
+If the configuration is invalid (detected during startup or while processing a configuraton update request), do not 
+accept new requests; wait for either another configuration update request, or system shutdown.
+
 ## Use Case Diagram
 
 ![Use Case Diagram](use-cases.png)
