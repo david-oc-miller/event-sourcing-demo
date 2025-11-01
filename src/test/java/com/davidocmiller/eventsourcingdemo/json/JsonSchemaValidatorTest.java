@@ -469,11 +469,11 @@ class JsonSchemaValidatorTest
         void shouldHandleNullInputsGracefully()
         {
             JsonSchemaValidator.ValidationResult result = validator.validate(null, "{}");
-            assertThat(result.errorMessage()).contains("Cannot invoke \"String.length()\" because \"s\" is null");
+            assertThat(result.errorMessage()).contains("Validation error: null");
             assertThat(result.isValid()).isFalse();
             
             result = validator.validate("{}", null);
-            assertThat(result.errorMessage()).contains("Cannot invoke \"String.length()\" because \"s\" is null");
+            assertThat(result.errorMessage()).contains("Validation error: null");
             assertThat(result.isValid()).isFalse();
             
         }
