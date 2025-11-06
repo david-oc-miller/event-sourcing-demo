@@ -1,9 +1,9 @@
-FROM eclipse-temurin:17-jdk-noble
+FROM eclipse-temurin:25-jdk-noble
 
 WORKDIR /app
 
-COPY target/event-sourcing-demo-*-fat.jar event-sourcing-demo.jar
-COPY src/main/resources/wait-forever.sh wait-forever.sh
+COPY event-sourcing-library/target/event-sourcing-library-*-fat.jar event-sourcing-demo.jar
+COPY event-sourcing-library/src/main/resources/wait-forever.sh wait-forever.sh
 
 EXPOSE 8080
 
