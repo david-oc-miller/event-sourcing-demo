@@ -51,9 +51,17 @@ jobs:
       with:
         java-version: 25
 
-    - name: Build with Maven
+    - name: Build BOM with Maven
       run: mvn clean install
       working-directory: .
+
+    - name: Build Library with Maven
+      run: mvn clean install
+      working-directory: event-sourcing-library
+
+    - name: Build Demo App with Maven
+      run: mvn clean install
+      working-directory: event-sourcing-demo-app
 
     - name: Publish Docker Image
       id: publish

@@ -5,23 +5,59 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.davidocmiller</groupId>
-        <artifactId>event-sourcing-demo</artifactId>
-        <version>0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
 
     <!-- Project Information -->
     <groupId>com.davidocmiller.event-sourcing-demo</groupId>
     <artifactId>event-sourcing-demo-app</artifactId>
-    <version>${project.parent.version}</version>
+    <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Event Sourcing Library Demo App</name>
     <description>
         A demo application, showing how to use the library
     </description>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.davidocmiller</groupId>
+                <artifactId>event-sourcing-demo</artifactId>
+                <version>0.1-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <!-- Java Version -->
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <maven.compiler.release>25</maven.compiler.release>
+
+        <!-- annotation processors -->
+        <lombok.version>1.18.42</lombok.version>
+
+        <!-- test libraries -->
+        <assertj.version>3.27.6</assertj.version>
+        <junit.version>6.0.1</junit.version>
+        <pitest.version>1.8.0</pitest.version>
+        <pitest.junit5.version>1.2.3</pitest.junit5.version>
+
+        <!-- Encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Plugin Versions -->
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version>
+        <maven.failsafe.plugin.version>3.1.2</maven.failsafe.plugin.version>
+        <jacoco.plugin.version>0.8.14</jacoco.plugin.version>
+        <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+        <maven.shade.plugin.version>3.5.0</maven.shade.plugin.version>
+        <maven.javadoc.plugin.version>3.5.0</maven.javadoc.plugin.version>
+        <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
+    </properties>
 
 
     <!-- Build Configuration -->
