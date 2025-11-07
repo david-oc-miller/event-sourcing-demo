@@ -1,19 +1,24 @@
-// mermaid output files
+# mermaid output files
 docs/*.svg
 docs/*.pdf
 docs/chrome-headless-shell
 
-// Eclipse files
+# Eclipse files
 .classpath
 .project
 .settings
 .factorypath
+.workspace
 
-// maven
+# maven
 target
 dependency-reduced-pom.xml
 
-// Emacs
-#*
-*#
+# Emacs
+\#*#
+.dir-locals.el
+.lsp-session-v1
 
+# intellij
+.idea
+**/*.iml
