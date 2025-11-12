@@ -1,4 +1,4 @@
-package com.davidocmiller.eventsourcingdemo;
+package com.davidocmiller.eventsourcingdemoapp;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

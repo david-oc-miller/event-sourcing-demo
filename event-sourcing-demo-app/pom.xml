@@ -17,18 +17,6 @@
         A demo application, showing how to use the library
     </description>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.davidocmiller</groupId>
-                <artifactId>event-sourcing-demo</artifactId>
-                <version>0.1-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <properties>
         <!-- Java Version -->
         <maven.compiler.source>25</maven.compiler.source>
@@ -58,6 +46,22 @@
         <maven.javadoc.plugin.version>3.5.0</maven.javadoc.plugin.version>
         <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.davidocmiller.event-sourcing-demo</groupId>
+            <artifactId>event-sourcing-library</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Test Dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 
     <!-- Build Configuration -->

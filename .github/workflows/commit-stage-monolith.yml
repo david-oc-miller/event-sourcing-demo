@@ -4,7 +4,6 @@ on:
   push:
     branches: [ "main" ]
     paths:
-        - 'pom.xml'
         - 'event-sourcing-demo-app/**'
         - 'event-sourcing-library/**'
         - 'Dockerfile'
@@ -12,7 +11,6 @@ on:
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'pom.xml'
       - 'event-sourcing-demo-app/**'
       - 'event-sourcing-library/**'
       - 'Dockerfile'
@@ -50,10 +48,6 @@ jobs:
       uses: s4u/setup-maven-action@v1.19.0
       with:
         java-version: 25
-
-    - name: Build BOM with Maven
-      run: mvn clean install
-      working-directory: .
 
     - name: Build Library with Maven
       run: mvn clean install
